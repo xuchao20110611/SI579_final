@@ -11,14 +11,17 @@ var backgroundsetting = {
 
 const [cityName,setcityName] = useState('Boston');
 const [humiditylist,sethumiditylist] = useState([]);
-
-let targetapi='https://api.openweathermap.org/data/2.5/forecast/daily?q='
-    +cityName
-    +'&cnt=5&appid='
-    + process.env.REACT_APP_OPENWEATHERTOKEN;
-fetch(targetapi)
+const [targetapi,settargetapi] = useState();
+useEffect(
+    ()=>{
+        let targetapi='https://api.openweathermap.org/data/2.5/forecast/daily?q='
+            +cityName
+            +'&cnt=5&appid='
+            + process.env.REACT_APP_OPENWEATHERTOKEN;
+         fetch(targetapi)
          .then(response => response.json())
          .then(data => {
+            console.log("print");
             let daylist=data['list'];
             let newhumiditylist=[];
             for(let day of daylist)
@@ -28,12 +31,17 @@ fetch(targetapi)
             sethumiditylist(newhumiditylist);
 
          });
+    }
+    ,[cityName]);
+
+
+
 
 
 return <div style={backgroundsetting}>
 props.CityName(to be replaced){props.CityName}
 
-{humiditylist[1]}
+{humiditylist}
 </div>
 
 }

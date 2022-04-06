@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  width: auto;
+  height: 900px;
+  text-align: center;
+  margin: 0 auto;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
 }
 
 .App-logo {
@@ -35,4 +42,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* Style goes here */
+.searchBox {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  background-color:rgba(240,248,255,0.85);
+  height: 300px;
+  width: 50%;
+  position: relative;
+  z-index: 100;
+  top: 20%;
+  border: black 2px solid;
+  border-radius: 1.3em;
+}
+
+.input {
+  width: 50%;
+  text-align: center;
+  height: fit-content;
+  margin: auto 0;
+}
+
+.searchBtn {
+  text-align: center;
+  height: fit-content;
+  margin: auto 0;
 }
