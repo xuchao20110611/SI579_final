@@ -29,7 +29,7 @@ var sectionStyle = {
 <body>
     <div className="App" style={sectionStyle}>
       <SearchBox />
-      <Weatherdashboard />
+
     </div>
 
 </body>
