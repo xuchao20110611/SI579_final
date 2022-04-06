@@ -21,6 +21,10 @@ If you clone and want to run locally, please make sure you have installed dotenv
 
 > npm install dotenv
 
+Install boostrap with your local react app.
+
+> npm install bootstrap --save
+
 And have an valid openweathernmap(https://openweathermap.org/api) api key and assigned in your .env file:
 
 > REACT_APP_OPENWEATHERTOKEN = {your api key}
