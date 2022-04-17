@@ -100,7 +100,7 @@ const tabList = [
 return (
 <div style={backgroundsetting}>
 <Card
-        style={{ width: '100%' }}
+        style={{ width: '100%',background: 'rgba(0,0,0,0)', border: 'none' }}
         title="Card title"
         tabList={tabList}
         activeTabKey={activeTabKey1}

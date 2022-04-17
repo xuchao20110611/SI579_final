@@ -7,6 +7,7 @@ import {useState,useEffect} from "react";
 
 
 import anime, { AnimeParams } from 'animejs';
+import {Card} from "antd";
 
 function App() {
 
@@ -29,9 +30,12 @@ useEffect(
 
 
 <body>
-    <div className="searchBox">
+<div className="App" style={sectionStyle}>
+    <div className="searchBox"         style={{ height:'700px' }}
+    >
       <Weatherdashboard />
     </div>
+</div>
 </body>
 
   );
