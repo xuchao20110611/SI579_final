@@ -21,13 +21,14 @@ const [lowesttemplist,setlowesttemplist] =useState([]);
 const [weathertypelist,setweathertypelist] = useState([]);
 const [iconsrclist,seticonsrclist] = useState([]);
 const [targetapi,settargetapi] = useState();
-
+const [DayTemplist,setDayTemplist] = useState([]);
+const [TimeZone,setTimeZone]=useState(0);
 
 useEffect(
     ()=>{
         let targetapi='https://api.openweathermap.org/data/2.5/forecast/daily?units=imperial&q='
             +cityName
-            +'&cnt=5&appid='
+            +'&cnt=15&appid='
             + process.env.REACT_APP_OPENWEATHERTOKEN;
          fetch(targetapi)
          .then(response => response.json())
@@ -39,10 +40,9 @@ useEffect(
             let newlowesttemplist=[];
             let newweathertypelist=[];
             let newiconsrclist=[];
-            let newdtlist=[]
-
-            console.log(daylist);
-
+            let newdtlist=[];
+            let newDayTemplist=[];
+             console.log(daylist);
 
 
 
@@ -52,6 +52,8 @@ useEffect(
                 newhumiditylist.push(day['humidity']);
                 newhighesttemplist.push(day['temp']['max']);
                 newlowesttemplist.push(day['temp']['min']);
+                newDayTemplist.push(day['temp']['day']);
+
                 newweathertypelist.push(day['weather'][0]['description']);
 
                 newiconsrclist.push('http://openweathermap.org/img/w/'+day['weather'][0]['icon']+".png");
@@ -64,6 +66,7 @@ useEffect(
             setlowesttemplist(newlowesttemplist);
             setweathertypelist(newweathertypelist);
             seticonsrclist(newiconsrclist);
+            setDayTemplist(newDayTemplist);
 
 
          });
@@ -117,7 +120,7 @@ return (
 
 props.CityName(to be replaced){props.CityName}
 
-<LineChart datalist={humiditylist} dtlist={DtList}/>
+<LineChart datalist={DayTemplist} dtlist={DtList} timezone={TimeZone}/>
 </div>
 //<img src='http://openweathermap.org/img/w/10d.png'/>
 );
