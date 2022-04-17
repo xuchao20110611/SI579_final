@@ -1,14 +1,26 @@
 import {useSpring} from 'react-spring'
+import moment from 'moment';
 import ReactAnime from 'react-animejs'
 import CanvasJSReact from './canvasjs.stock.react';
+import ReactAnimatedWeather from 'react-animated-weather';
 
 const {Anime, stagger} = ReactAnime
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
-
+const xxxs = {
+    icon: 'CLEAR_DAY',
+    color: 'goldenrod',
+    size: 512,
+    animate: true
+};
 const LineChart = (props) => {
 
+// console.log(props.dtlist);
+props.dtlist.forEach(element=>
+{
+    console.log(new moment(element*1000));
+})
 
 const options = {
       title: {
@@ -53,7 +65,7 @@ const options = {
         }
       }
     };
-    const containerProps = {
+const containerProps = {
       width: "80%",
       height: "450px",
       margin: "auto"
@@ -61,10 +73,12 @@ const options = {
 
 
 return (<div>
-        <CanvasJSStockChart
-          options={options}
-          containerProps = {containerProps}
-        />
+
+        <ReactAnimatedWeather
+            icon={xxxs.icon}
+            color={xxxs.color}
+            size={xxxs.size}
+            animate={xxxs.animate}/>
       </div>);
 }
 export default LineChart;

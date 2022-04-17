@@ -1,6 +1,7 @@
 import {useState,useEffect} from "react";
 import WeatherIcon from "./WeatherIcon"
 import LineChart from "./LineChart"
+import WeatherAnimate from "./WeatherAnimate"
 //Copyright:https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=19358
 
 
@@ -13,6 +14,7 @@ var backgroundsetting = {
 };
 
 const [cityName,setcityName] = useState('New York');
+const [DtList,setDtList] = useState([]);
 const [humiditylist,sethumiditylist] = useState([]);
 const [highesttemplist,sethighesttemplist] =useState([]);
 const [lowesttemplist,setlowesttemplist] =useState([]);
@@ -37,6 +39,7 @@ useEffect(
             let newlowesttemplist=[];
             let newweathertypelist=[];
             let newiconsrclist=[];
+            let newdtlist=[]
 
             console.log(daylist);
 
@@ -45,6 +48,7 @@ useEffect(
 
             for(let day of daylist)
             {
+                newdtlist.push(day['dt']);
                 newhumiditylist.push(day['humidity']);
                 newhighesttemplist.push(day['temp']['max']);
                 newlowesttemplist.push(day['temp']['min']);
@@ -54,7 +58,7 @@ useEffect(
             }
 
 
-
+            setDtList(newdtlist);
             sethumiditylist(newhumiditylist);
             sethighesttemplist(newhighesttemplist);
             setlowesttemplist(newlowesttemplist);
@@ -68,57 +72,55 @@ useEffect(
 
 
 
-
-useEffect(
-    ()=>{
-        console.log("humidity list",humiditylist);
-    }
-    ,[humiditylist]
-);
-
-useEffect(
-    ()=>{
-        console.log("max temperature list",highesttemplist);
-    }
-    ,[highesttemplist]
-);
-
-useEffect(
-    ()=>{
-        console.log("min temperature list",lowesttemplist);
-    }
-    ,[lowesttemplist]
-);
-
-useEffect(
-    ()=>{
-        console.log("weather type list",weathertypelist);
-    }
-    ,[weathertypelist]
-);
-
-useEffect(
-    ()=>{
-        console.log("icon list",iconsrclist);
-    }
-    ,[iconsrclist]
-);
+//
+// useEffect(
+//     ()=>{
+//         console.log("humidity list",humiditylist);
+//     }
+//     ,[humiditylist]
+// );
+//
+// useEffect(
+//     ()=>{
+//         console.log("max temperature list",highesttemplist);
+//     }
+//     ,[highesttemplist]
+// );
+//
+// useEffect(
+//     ()=>{
+//         console.log("min temperature list",lowesttemplist);
+//     }
+//     ,[lowesttemplist]
+// );
+//
+// useEffect(
+//     ()=>{
+//         console.log("weather type list",weathertypelist);
+//     }
+//     ,[weathertypelist]
+// );
+//
+// useEffect(
+//     ()=>{
+//         console.log("icon list",iconsrclist);
+//     }
+//     ,[iconsrclist]
+// );
 
 
 
 return (
 
-/*
+
 <div style={backgroundsetting}>
 
 props.CityName(to be replaced){props.CityName}
 
-<WeatherIcon weather='Thunder Rain' />
-<img src='http://openweathermap.org/img/w/10d.png'/>
-<LineChart />
-</div>*/
-
-<LineChart />);
+<LineChart datalist={humiditylist} dtlist={DtList}/>
+</div>
+//<img src='http://openweathermap.org/img/w/10d.png'/>
+);
 
 }
 export default Weatherdashboard;
