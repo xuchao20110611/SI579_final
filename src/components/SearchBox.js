@@ -9,6 +9,7 @@ const inputCity = useRef("New York");
 
 function searchnewcity(){
 props.setCity(inputCity.current.value.replaceAll(" ","%20"));
+props.setcityName(inputCity.current.value);
 //console.log(inputCity.current.value);
 }
 

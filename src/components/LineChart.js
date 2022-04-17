@@ -69,7 +69,6 @@ return (<div>
           containerProps = {containerProps}
           style={{ background: 'rgba(0,0,0,0)' }}
         />
-        <SearchBox />
       </div>);
 }
 export default LineChart;

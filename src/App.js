@@ -33,7 +33,7 @@ useEffect(
 <div className="App" style={sectionStyle}>
     <div className="searchBox"         style={{ height:'700px' }}
     >
-      <Weatherdashboard />
+      <Weatherdashboard setCity={setCity}/>
     </div>
 </div>
 </body>

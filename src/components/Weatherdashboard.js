@@ -2,6 +2,7 @@ import {useState,useEffect} from "react";
 import WeatherIcon from "./WeatherIcon"
 import LineChart from "./LineChart"
 import WeatherAnimate from "./WeatherAnimate"
+import SearchBox from "./SearchBox";
 import { Card } from 'antd';
 import Current from './Current';
 import 'antd/dist/antd.css';
@@ -26,6 +27,14 @@ const [iconsrclist,seticonsrclist] = useState([]);
 const [targetapi,settargetapi] = useState();
 const [DayTemplist,setDayTemplist] = useState([]);
 const [TimeZone,setTimeZone]=useState(0);
+const [currentTemp,setcurrentTemp]=useState('');
+const [currentFeel,setcurrentFeel]=useState('');
+const [currentMin,setcurrentMin]=useState('');
+const [currentMax,setcurrentMax]=useState('');
+const [currentHum,setcurrentHum]=useState('');
+const [currentWeather,setcurrentWeather]=useState('');
+
+
 
 useEffect(
     ()=>{
@@ -73,6 +82,25 @@ useEffect(
 
 
          });
+
+
+
+         let targetcurrentapi="https://api.openweathermap.org/data/2.5/weather?units=imperial&q="
+                                + cityName
+                                + "&appid="
+                                + process.env.REACT_APP_OPENWEATHERTOKEN;
+
+        fetch(targetcurrentapi)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setcurrentTemp(data['main']['temp']);
+                setcurrentFeel(data['main']['feels_like']);
+                setcurrentMax(data['main']['temp_max']);
+                setcurrentMin(data['main']['temp_min']);
+                setcurrentHum(data['main']['humidity']);
+                setcurrentWeather(data['weather'][0]['main']);
+            })
     }
     ,[cityName]);
 
@@ -88,7 +116,14 @@ const tabList = [
     ];
 
     const contentList = {
-    Current: <Current />,
+    Current: <Current
+        city={cityName}
+        currentTemp={currentTemp}
+        currentFeel={currentFeel}
+        currentMin={currentMin}
+        currentMax={currentMax}
+        currentHum={currentHum}
+        currentWeather={currentWeather}/>,
     Forecast: <LineChart datalist={DayTemplist} dtlist={DtList} timezone={TimeZone}/>,
     };
     
@@ -100,6 +135,7 @@ const tabList = [
 
 return (
 <div style={backgroundsetting}>
+<SearchBox setCity={props.setCity} setcityName={setcityName}/>
 <Card
 
         style={{ width: '100%',background: 'rgba(0,0,0,0)', border: 'none' }}
@@ -113,6 +149,7 @@ return (
       >
         {contentList[activeTabKey1]}
       </Card>
+
 </div>
       
 //<img src='http://openweathermap.org/img/w/10d.png'/>
