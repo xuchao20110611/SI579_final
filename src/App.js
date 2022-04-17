@@ -6,6 +6,8 @@ import SearchBox from "./components/SearchBox"
 import {useState,useEffect} from "react";
 
 
+import anime, { AnimeParams } from 'animejs';
+
 function App() {
 
 const [City,setCity]=useState('New York');
@@ -24,24 +26,13 @@ useEffect(
   return (
 
 
-//
-//<body>
-//    <div className="App" style={sectionStyle}>
-//
-//        <img src={logo} className="App-logo" alt="logo" />
-//
-//
-//          Learn React
-//
-//    </div>
-//    <Weatherdashboard />
-//</body>
+
 
 <body>
-    <div className="App" style={sectionStyle}>
-      <SearchBox city={City} setCity={setCity}/>
 
-    </div>
+      <Weatherdashboard />
+
+
 
 </body>
 
