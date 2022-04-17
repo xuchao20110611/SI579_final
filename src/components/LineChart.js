@@ -39,6 +39,9 @@ const options = {
       title: {
           text: "15 days Temperature Prediction"
       },
+      rangeSelector: {
+        enabled: false,
+      },
       animationEnabled: true,
       charts: [{
           data: [{
