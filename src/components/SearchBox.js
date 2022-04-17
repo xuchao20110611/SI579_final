@@ -9,7 +9,7 @@ const inputCity = useRef("New York");
 
 function searchnewcity(){
 props.setCity(inputCity.current.value.replaceAll(" ","%20"));
-console.log(inputCity.current.value);
+//console.log(inputCity.current.value);
 }
 
 
@@ -21,7 +21,7 @@ return (<div className="searchBox">
         Search
         </Button>
         <hr />
-        <Weatherdashboard />
+
 
 
 
