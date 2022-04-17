@@ -51,8 +51,8 @@
   display: flex;
   justify-content: space-evenly;
   background-color:rgba(240,248,255,0.85);
-  height: 300px;
-  width: 50%;
+  height: auto;
+  width: auto;
   position: relative;
   z-index: 100;
   top: 20%;
@@ -72,3 +72,4 @@
   height: fit-content;
   margin: auto 0;
 }
+

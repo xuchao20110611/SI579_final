@@ -39,6 +39,9 @@ const options = {
       title: {
           text: "15 days Temperature Prediction"
       },
+      rangeSelector: {
+        enabled: false,
+      },
       animationEnabled: true,
       charts: [{
           data: [{
@@ -64,8 +67,8 @@ return (<div>
         <CanvasJSStockChart
           options={options}
           containerProps = {containerProps}
+          style={{ background: 'rgba(0,0,0,0)' }}
         />
-        <SearchBox />
       </div>);
 }
 export default LineChart;

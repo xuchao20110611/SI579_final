@@ -7,6 +7,7 @@ import {useState,useEffect} from "react";
 
 
 import anime, { AnimeParams } from 'animejs';
+import {Card} from "antd";
 
 function App() {
 
@@ -29,14 +30,14 @@ useEffect(
 
 
 <body>
-
-      <Weatherdashboard />
-
-
-
+<div className="App" style={sectionStyle}>
+    <div className="searchBox"         style={{ height:'700px' }}
+    >
+      <Weatherdashboard setCity={setCity}/>
+    </div>
+</div>
 </body>
 
   );
 }
-
 export default App;
