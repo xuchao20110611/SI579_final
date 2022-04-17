@@ -19,23 +19,13 @@ useEffect(
 },
 [City]);
 
-
-
-
-
   return (
 
-
-
-
 <body>
-
+    <div className="App" style={sectionStyle}>
       <Weatherdashboard />
-
-
-
+    </div>
 </body>
-
   );
 }
 

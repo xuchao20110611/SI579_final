@@ -1,6 +1,8 @@
 import {useState,useEffect} from "react";
-import WeatherIcon from "./WeatherIcon"
-import LineChart from "./LineChart"
+import WeatherIcon from "./WeatherIcon";
+import LineChart from "./LineChart";
+import SearchBox from "./SearchBox";
+import AnimatedWeather from './AnimatedWeather';
 //Copyright:https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=19358
 
 
@@ -107,18 +109,18 @@ useEffect(
 
 
 return (
-
-/*
 <div style={backgroundsetting}>
 
 props.CityName(to be replaced){props.CityName}
+    <SearchBox />
+    <WeatherIcon weather='Thunder Rain' />
+    <img src='http://openweathermap.org/img/w/10d.png'/>
+{/* <LineChart /> */}
+    <AnimatedWeather />
+</div>
+)
 
-<WeatherIcon weather='Thunder Rain' />
-<img src='http://openweathermap.org/img/w/10d.png'/>
-<LineChart />
-</div>*/
-
-<LineChart />);
 
 }
+
 export default Weatherdashboard;
