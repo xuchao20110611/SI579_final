@@ -14,17 +14,13 @@ props.setCity(inputCity.current.value.replaceAll(" ","%20"));
 
 
 
-return (<div className="searchBox">
+return (<div>
 
         <input type="input" ref={inputCity} placeholder="Please enter a city name" className="input"></input>
         <Button variant="primary" size="lg" className="searchBtn" onClick={searchnewcity}>
         Search
         </Button>
         <hr />
-
-
-
-
       </div>)
 }
 

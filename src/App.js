@@ -29,14 +29,11 @@ useEffect(
 
 
 <body>
-
+    <div className="searchBox">
       <Weatherdashboard />
-
-
-
+    </div>
 </body>
 
   );
 }
-
 export default App;
