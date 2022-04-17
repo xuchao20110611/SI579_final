@@ -10,7 +10,7 @@ import anime, { AnimeParams } from 'animejs';
 
 function App() {
 
-const [City,setCity]=useState('New York');
+const [City,setCity]=useState('New%20York');
 const [sectionStyle,setsectionStyle]=useState({backgroundImage: `url(${"https://source.unsplash.com/1600x900/?city%20New%20York"})`});
 useEffect(
 ()=>{let newurl="https://source.unsplash.com/1600x900/?city%20"+City;
