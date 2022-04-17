@@ -1,0 +1,25 @@
+.top {
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-bottom: 3rem;
+}
+
+.right-side {
+    width: 50%;
+    text-align: center;
+    height: auto;
+    border-left: 2px lightgrey solid;
+}
+
+.left-side {
+    width: 50%;
+    text-align: center;
+}
+
+.bottom {
+    display:flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items:center;
+}

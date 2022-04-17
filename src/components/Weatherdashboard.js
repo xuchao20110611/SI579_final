@@ -3,6 +3,7 @@ import WeatherIcon from "./WeatherIcon"
 import LineChart from "./LineChart"
 import WeatherAnimate from "./WeatherAnimate"
 import { Card } from 'antd';
+import Current from './Current';
 import 'antd/dist/antd.css';
 //Copyright:https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=19358
 
@@ -87,11 +88,11 @@ const tabList = [
     ];
 
     const contentList = {
-    Current: <p>Current</p>,
+    Current: <Current />,
     Forecast: <LineChart datalist={DayTemplist} dtlist={DtList} timezone={TimeZone}/>,
     };
     
-    const [activeTabKey1, setActiveTabKey1] = useState('tab1');
+    const [activeTabKey1, setActiveTabKey1] = useState('Current');
 
     const onTab1Change = key => {
     setActiveTabKey1(key);
@@ -100,7 +101,9 @@ const tabList = [
 return (
 <div style={backgroundsetting}>
 <Card
+
         style={{ width: '100%',background: 'rgba(0,0,0,0)', border: 'none' }}
+
         title="Card title"
         tabList={tabList}
         activeTabKey={activeTabKey1}
