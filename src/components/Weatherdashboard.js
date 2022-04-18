@@ -140,7 +140,7 @@ return (
 
         style={{ width: '100%',background: 'rgba(0,0,0,0)', border: 'none' }}
 
-        title="Card title"
+        title=""
         tabList={tabList}
         activeTabKey={activeTabKey1}
         onTabChange={key => {
