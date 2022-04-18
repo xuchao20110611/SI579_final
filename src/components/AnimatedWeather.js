@@ -43,17 +43,11 @@ const AnimatedWeather = (props) => {
     //   };
 
 
-
-
-
-    const defaults = {
-        icon: 'CLEAR_DAY',
-        color: 'goldenrod',
-    };
     if(props.weather!='Thunderstorm '){
         return (
         <ReactAnimatedWeather
             icon={Animatedict[props.weather]}
+            color={'#FEAD08'}
             size={80}
             animate={true} />
     )}

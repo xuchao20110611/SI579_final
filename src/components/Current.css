@@ -9,7 +9,7 @@
     width: 50%;
     text-align: center;
     height: auto;
-    border-left: 2px lightgrey solid;
+    border-left: 2px grey solid;
 }
 
 .left-side {
@@ -22,4 +22,8 @@
     flex-direction: row;
     justify-content:space-around;
     align-items:center;
+}
+
+.changeColor {
+    color: #095FD6;
 }
