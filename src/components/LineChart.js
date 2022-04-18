@@ -23,21 +23,32 @@ const LineChart = (props) => {
 // })
 
 let datalist=[];
-
+let highlist=[];
+let lowlist=[];
 if(props.dtlist.length>0)
 {
-    for (var i = 0; i < 16; i++)
+    let dtlength=props.dtlist.length;
+    for (var i = 0; i < dtlength; i++)
     {
         // console.log(new Date(props.dtlist[i]*1000+props.timezone*1000));
         datalist.push({x:new Date(props.dtlist[i]*1000+props.timezone*1000),y:props.datalist[i]});
+        if(props.highestlist.length>0){
+            highlist.push({x:new Date(props.dtlist[i]*1000+props.timezone*1000),y:props.highestlist[i]});
+        }
+        if(props.lowestlist.length>0){
+            lowlist.push({x:new Date(props.dtlist[i]*1000+props.timezone*1000),y:props.lowestlist[i]});
+        }
+
     }
 }
+
+
 
 // console.log(datalist);
 
 const options = {
       title: {
-          text: "15 days Temperature Prediction"
+          text: props.charttitle
       },
       rangeSelector: {
         enabled: false,
@@ -46,14 +57,25 @@ const options = {
       charts: [{
           data: [{
             type: "line",
-            dataPoints: datalist
-         }]
+            dataPoints: datalist,
+            color:"green"
+         },
+              {
+                  type: "line",
+                  dataPoints: highlist,
+                  color: "red"
+              },
+              {
+                  type: "line",
+                  dataPoints: lowlist,
+                  color:"blue"
+              },
+         ]
       }],
       navigator: {
-        slider: {
-          minimum: new Date("2018-07-01"),
-          maximum: new Date("2019-06-30")
-        }
+
+          animationEnabled:true,
+          animationDuration:20
       }
     };
 const containerProps = {

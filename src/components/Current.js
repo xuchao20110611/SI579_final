@@ -1,4 +1,5 @@
 import './Current.css';
+import AnimatedWeather from "./AnimatedWeather";
 
 const Current = (props) => {
 
@@ -11,7 +12,7 @@ const Current = (props) => {
                 </div>
                 <div className="right-side">
                     <h1>{props.currentWeather}</h1>
-                    <h1>Weather Icon</h1>
+                    <AnimatedWeather weather={props.currentWeather}/>
                 </div>
             </div>
             <div className="bottom">

@@ -15,7 +15,7 @@ props.setcityName(inputCity.current.value);
 
 
 
-return (<div>
+return (<div className="search">
 
         <input type="input" ref={inputCity} placeholder="Please enter a city name" className="input"></input>
         <Button variant="primary" size="lg" className="searchBtn" onClick={searchnewcity}>
