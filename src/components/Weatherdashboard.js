@@ -17,7 +17,7 @@ var backgroundsetting = {
   backgroundColor:'rgba(178,178,178,0)',
 };
 
-const [cityName,setcityName] = useState('New York');
+const [cityName,setcityName] = useState('Ann Arbor');
 const [DtList,setDtList] = useState([]);
 const [humiditylist,sethumiditylist] = useState([]);
 const [highesttemplist,sethighesttemplist] =useState([]);
@@ -110,8 +110,12 @@ const tabList = [
         tab: 'Current',
     },
     {
-        key: 'Forecast',
-        tab: 'Forecast',
+        key: '15 Days Forecast',
+        tab: '15 Days Forecast',
+    },
+    {
+        key: '4 days Hourly Forecast',
+        tab: '4 days Hourly Forecast',
     },
     ];
 
