@@ -18,14 +18,20 @@ var backgroundsetting = {
 };
 
 const [cityName,setcityName] = useState('Ann Arbor');
-const [DtList,setDtList] = useState([]);
+
 const [humiditylist,sethumiditylist] = useState([]);
-const [highesttemplist,sethighesttemplist] =useState([]);
-const [lowesttemplist,setlowesttemplist] =useState([]);
+const [HighestTempList,setHighestTempList] =useState([]);
+const [LowestTempList,setLowestTempList] =useState([]);
 const [weathertypelist,setweathertypelist] = useState([]);
 const [iconsrclist,seticonsrclist] = useState([]);
 const [targetapi,settargetapi] = useState();
 const [DayTemplist,setDayTemplist] = useState([]);
+const [DtList,setDtList] = useState([]);
+const [HourTemplist,setHourTemplist] = useState([]);
+const [HourList,setHourList] = useState([]);
+const [HighestHourList,setHighestHourList] =useState([]);
+const [LowestHourList,setLowestHourList] =useState([]);
+
 const [TimeZone,setTimeZone]=useState(0);
 const [currentTemp,setcurrentTemp]=useState('');
 const [currentFeel,setcurrentFeel]=useState('');
@@ -54,7 +60,7 @@ useEffect(
             let newiconsrclist=[];
             let newdtlist=[];
             let newDayTemplist=[];
-             console.log(daylist);
+             // console.log(daylist);
 
 
 
@@ -74,8 +80,8 @@ useEffect(
 
             setDtList(newdtlist);
             sethumiditylist(newhumiditylist);
-            sethighesttemplist(newhighesttemplist);
-            setlowesttemplist(newlowesttemplist);
+            setHighestTempList(newhighesttemplist);
+            setLowestTempList(newlowesttemplist);
             setweathertypelist(newweathertypelist);
             seticonsrclist(newiconsrclist);
             setDayTemplist(newDayTemplist);
@@ -93,16 +99,48 @@ useEffect(
         fetch(targetcurrentapi)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+
                 setcurrentTemp(data['main']['temp']);
                 setcurrentFeel(data['main']['feels_like']);
                 setcurrentMax(data['main']['temp_max']);
                 setcurrentMin(data['main']['temp_min']);
                 setcurrentHum(data['main']['humidity']);
                 setcurrentWeather(data['weather'][0]['main']);
-            })
+            });
+
+            let targethourapi="https://pro.openweathermap.org/data/2.5/forecast/hourly?units=imperial&q="
+                                + cityName
+                                + "&appid="
+                                + process.env.REACT_APP_OPENWEATHERTOKEN;
+             fetch(targethourapi)
+            .then(response => response.json())
+            .then(data => {
+                let newhourlist=[];
+                let newhourtemplist=[];
+                let newhourhightemplist=[];
+                let newhourlowemplist=[];
+                console.log(data);
+
+                for(let hour of data['list'])
+                {
+                    newhourlist.push(hour['dt']);
+                    newhourtemplist.push(hour['main']['temp']);
+                    newhourhightemplist.push(hour['main']['temp_max']);
+                    newhourlowemplist.push(hour['main']['temp_min']);
+                }
+                setHourList(newhourlist);
+                setHourTemplist(newhourtemplist);
+                setHighestHourList(newhourhightemplist);
+                setLowestHourList(newhourlowemplist);
+
+            });
     }
     ,[cityName]);
+
+
+
+
+
 
 const tabList = [
     {
@@ -110,11 +148,11 @@ const tabList = [
         tab: 'Current',
     },
     {
-        key: '15 Days Forecast',
+        key: 'Forecast_Fifty_Days',
         tab: '15 Days Forecast',
     },
     {
-        key: '4 days Hourly Forecast',
+        key: 'Forecast_Four_Hours',
         tab: '4 days Hourly Forecast',
     },
     ];
@@ -128,7 +166,14 @@ const tabList = [
         currentMax={currentMax}
         currentHum={currentHum}
         currentWeather={currentWeather}/>,
-    Forecast: <LineChart datalist={DayTemplist} dtlist={DtList} timezone={TimeZone}/>,
+    Forecast_Fifty_Days: <LineChart charttitle="15 Days Daily Temperature Prediction"
+                                    datalist={DayTemplist} dtlist={DtList}
+                                    highestlist={HighestTempList} lowestlist={LowestTempList}
+                                    timezone={TimeZone}/>,
+    Forecast_Four_Hours: <LineChart charttitle="4 Days Hourly Temperature Prediction"
+                                    datalist={HourTemplist} dtlist={HourList}
+                                    highestlist='[]' lowestlist='[]'
+                                    timezone={TimeZone}/>,
     };
     
     const [activeTabKey1, setActiveTabKey1] = useState('Current');
