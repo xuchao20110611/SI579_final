@@ -1,6 +1,6 @@
 import './App.css';
+import Weatherdashboard from "./components/Weatherdashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Weatherdashboard from "./components/Weatherdashboard"
 import {useState,useEffect} from "react";
 
 function App() {

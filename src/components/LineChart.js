@@ -60,29 +60,35 @@ const options = {
       rangeSelector: {
         enabled: false,
       },
+    //   legend: {
+    //     horizontalAlign: "center", // "center" , "right"
+    //     verticalAlign: "bottom",  // "top" , "bottom"
+    //     fontSize: 15,
+    //   },
       animationEnabled: true,
       charts: [{
-          data: [{
-            type: "line",
-            dataPoints: datalist,
-            color:"green",
-            legendText: "Temperature",
-            showInLegend: showmedium,
-         },
-              {
-                  type: "line",
-                  dataPoints: highlist,
-                  color: "red",
-                  legendText: "Highest Temperature",
-                  showInLegend: showhighest,
-              },
-              {
-                  type: "line",
-                  dataPoints: lowlist,
-                  color:"blue",
-                  legendText: "Lowest Temperature",
-                  showInLegend: showlowest,
-              },
+          data: [
+            {
+                type: "line",
+                dataPoints: datalist,
+                color:"#9F0DFF",
+                legendText: "Temperature",
+                showInLegend: showmedium,
+            },
+            {
+                type: "line",
+                dataPoints: highlist,
+                color: "gold",
+                legendText: "Highest Temperature",
+                showInLegend: showhighest,
+            },
+            {
+                type: "line",
+                dataPoints: lowlist,
+                color:"#095FD6",
+                legendText: "Lowest Temperature",
+                showInLegend: showlowest,
+            },
          ]
       }],
       navigator: {
