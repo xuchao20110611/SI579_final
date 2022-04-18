@@ -25,17 +25,24 @@ const LineChart = (props) => {
 let datalist=[];
 let highlist=[];
 let lowlist=[];
+let showhighest=(props.highestlist.length);
+let showlowest=(props.lowestlist.length>0);
+let showmedium=(props.dtlist.length>0);
 if(props.dtlist.length>0)
 {
+    showmedium=true;
     let dtlength=props.dtlist.length;
     for (var i = 0; i < dtlength; i++)
     {
         // console.log(new Date(props.dtlist[i]*1000+props.timezone*1000));
         datalist.push({x:new Date(props.dtlist[i]*1000+props.timezone*1000),y:props.datalist[i]});
         if(props.highestlist.length>0){
+
+            showhighest=true;
             highlist.push({x:new Date(props.dtlist[i]*1000+props.timezone*1000),y:props.highestlist[i]});
         }
         if(props.lowestlist.length>0){
+            showlowest=true;
             lowlist.push({x:new Date(props.dtlist[i]*1000+props.timezone*1000),y:props.lowestlist[i]});
         }
 
@@ -58,17 +65,23 @@ const options = {
           data: [{
             type: "line",
             dataPoints: datalist,
-            color:"green"
+            color:"green",
+            legendText: "Temperature",
+            showInLegend: showmedium,
          },
               {
                   type: "line",
                   dataPoints: highlist,
-                  color: "red"
+                  color: "red",
+                  legendText: "Highest Temperature",
+                  showInLegend: showhighest,
               },
               {
                   type: "line",
                   dataPoints: lowlist,
-                  color:"blue"
+                  color:"blue",
+                  legendText: "Lowest Temperature",
+                  showInLegend: showlowest,
               },
          ]
       }],

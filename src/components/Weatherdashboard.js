@@ -172,7 +172,7 @@ const tabList = [
                                     timezone={TimeZone}/>,
     Forecast_Four_Hours: <LineChart charttitle="4 Days Hourly Temperature Prediction"
                                     datalist={HourTemplist} dtlist={HourList}
-                                    highestlist='[]' lowestlist='[]'
+                                    highestlist={[]} lowestlist={[]}
                                     timezone={TimeZone}/>,
     };
     
