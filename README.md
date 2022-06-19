@@ -16,7 +16,7 @@ Ruqin Chang
 
 ## The source code
 
-The project is deployed on Github whilst the source code is published on https://github.com/xuchao20110611/SI579_final
+The project is deployed on Github(https://xuchao20110611.github.io/SI579_final/) whilst the source code is published on https://github.com/xuchao20110611/SI579_final
 If you clone and want to run locally, please make sure you have installed dotenv:
 
 > npm install dotenv
